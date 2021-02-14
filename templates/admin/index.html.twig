@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnés{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+
+{% endblock %}
+{% block body %}
+
+    <br>
+
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i,user in users %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ user.id  }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for role in user.roles  %}
+                        {% if role == "ROLE_USER" %}
+                                Utilisateurs
+                        {% elseif role == "ROLE_ABONNE" %}
+                                Abonné
+                            {% elseif role == "ROLE_ADMIN" %}
+                                    Admin
+                                {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('modifier_user',{'id':user.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i> </span> </a> &nbsp;
+                    <a href="{{ path('supprimer_user',{'id':user.id}) }}"><span class="btn btn-danger"><i class="fa fa-trash-o"></i> </span> </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'utilisateurs inscrits </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('js/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+{% endblock %}

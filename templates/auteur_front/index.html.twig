@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+{% include('header_front.html.twig') %}
+
+<div class="portfolio">
+
+    <div id="filters" class="sixteen columns">
+        <ul class="clearfix">
+            {% for a in listeAuteurs %}
+                <li><a id="all" href="{{ path('afficher_auteur_front',{'id':a.id })}}" data-filter="*" >
+                        <h5>{{ a.prenom }} </h5>
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </div></div>
+
+
+</body>
+</html>
+

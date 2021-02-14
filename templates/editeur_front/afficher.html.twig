@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+{% include('header_front.html.twig') %}
+
+<div class="portfolio">
+
+    <div id="filters" class="sixteen columns">
+        <ul class="clearfix">
+            {% for e in editeurs %}
+                <li><a id="all" href="{{ path('afficher_editeur_front',{'id':e.id })}}" data-filter="*" >
+                        <h5>{{ e.nomediteur }} </h5>
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </div></div>
+
+{% for l in livre %}
+{%  if  l.editeur.id == id %}
+    {% for i in l.images %}
+        {%  if  i.livres == l %}
+<div class="isotope fadeInLeft animated wow grid" style=" overflow: hidden; height: 480px;float: left;" id="portfolio_wrapper">
+    <!-- Portfolio Item -->
+    <figure style="left: 580px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;float: left;" class="portfolio-item one-four   animals isotope-item effect-oscar">
+    <div class="portfolio_img"> <img src="{{ asset('img/'~i.name)}}" alt="Portfolio 1"></div>
+                <figcaption>
+                    <div>
+                        <a href="{{ path('livre_front_show', {'id': l.id})}}" class="fancybox">
+                             <p>Emprunter</p>
+
+                        </a>
+                    </div>
+                </figcaption>
+</figure>
+</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+            {% endfor %}
+
+
+</body>
+</html>
+

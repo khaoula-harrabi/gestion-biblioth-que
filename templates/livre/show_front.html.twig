@@ -1,0 +1,78 @@
+{% extends 'base_front.html.twig' %}
+
+
+{% block body %}
+
+    <table class="table table-striped">
+        <tbody>
+
+        <tr>
+            <th>Titre</th>
+            <td>{{ livre.titre }}</td>
+        </tr>
+        <tr>
+            <th>Nbre De Pages</th>
+            <td>{{ livre.nbpages }}</td>
+        </tr>
+        <tr>
+            <th>Date Edition</th>
+            <td>{{ livre.dateedition ? livre.dateedition|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Nbre Exemplaires</th>
+            <td>{{ livre.nbreexemplaires }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ livre.prix }}</td>
+        </tr>
+        <tr>
+            <th>Isbn</th>
+            <td>{{ livre.isbn }}</td>
+        </tr>
+        <tr>
+            <th>Editeur</th>
+            <td>{{ livre.editeur.nomediteur }}</td>
+        </tr>
+        <tr>
+            <th>Categorie</th>
+            <td>{{ livre.categorie.designation }}</td>
+        </tr>
+        <tr>
+            <th>Auteurs</th>
+            <td>
+                <table border="1">
+                    <tr>
+                        <td>
+                            {% for auteur in livre.auteurs %}
+                                <span class="badge badge-primary">
+                                {{ auteur.prenom }} {{ auteur.nom }}
+                                    </span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+    </table>
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-2">  <a href="{{ path('front') }}"><span class="btn btn-primary"><i class="fa fa-backward"></i>&nbsp; Retour</span></a></div>
+            {% if app.user %}
+            <div class="col col-lg-2"> <a href="{{ path('nouvel_emprunt', {'id': livre.id}) }}"><span class="btn btn-success"><i class="fa fa-book"></i>&nbsp; Emprunter</span></a></div>
+{% endif %}
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

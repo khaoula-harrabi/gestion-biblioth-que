@@ -1,0 +1,76 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <title>Gestion bibliothèque</title>
+
+    <link href="{{ asset('front/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('front/js/fancybox/jquery.fancybox.css')}}" type="text/css" media="screen" />
+    <link href="{{ asset('front/css/style.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('front/css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('front/css/animate.css')}}" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="{{ asset('front/js/respond-1.1.0.min.js')}}"></script>
+    <script src="{{ asset('front/js/html5shiv.js')}}"></script>
+    <script src="{{ asset('front/js/html5element.js')}}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        <div class="active item">
+            <div class="caption zoomIn wow animated">
+                <h2>Mon Bibliothèque <br/><strong>Chercher des Livres selon catégories</strong></h2>
+            </div>
+
+            <img class="" src="{{ asset('front/img/slide1.jpg')}}" alt=""></div>
+        <div class="item">
+            <div class="caption zoomIn wow animated">
+                <h2>Mon Bibliothèque <br/><strong>Chercher des Livres selon Editeurs</strong></h2>
+            </div>
+            <img class="" src="{{ asset('front/img/slide1.jpg')}}" alt=""></div>
+        <div class="item">
+            <div class="caption zoomIn wow animated">
+                <h2>Mon Bibliothèque <br/><strong>Chercher des Livres selon Auteurs</strong></h2>
+            </div>
+            <img class="" src="{{ asset('front/img/slide1.jpg')}}" alt=""></div>
+
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<!--Header_section-->
+<header id="header_wrapper">
+    <div class="container">
+        <div class="header_box">
+            <!--<div class="logo"><a href="#">Resume</a></div>-->
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                </div>
+                <div id="main-nav" class="collapse navbar-collapse navStyle">
+                    <ul class="nav navbar-nav" id="mainNav">
+                        <li ><a href="{{ path('front')}}" class="scroll-link">Accueil</a></li>
+                        <li><a href="{{ path('auteur_front') }}" class="scroll-link">Auteur</a></li>
+                        <li><a href="{{ path('categorie_front') }}" class="scroll-link">Catégorie</a></li>
+                        <li><a href="{{ path('editeur_front')}}" class="scroll-link">Editeur</a></li>
+                        {% if app.user %} <li><a href="#" class="scroll-link"> {{ app.user.username }}</a></li>
+                       <li> <a href="{{ path('app_logout') }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<!--Header_section-->
